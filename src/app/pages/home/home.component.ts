@@ -1,7 +1,6 @@
-import { FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { lastValueFrom } from 'rxjs';
