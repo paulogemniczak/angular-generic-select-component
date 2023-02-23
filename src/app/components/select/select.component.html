@@ -1,0 +1,31 @@
+<div class="relative">
+	<div class="flex flex-col gap-1 relative">
+		<label class="text-sm text-gray-500">{{label}}</label>
+		<select
+			class="rounded-md border bg-gray-100 invalid:text-blue-400 dark:bg-[#121214] dark:border-[#29292e] dark:text-white py-3 focus:outline-none focus:ring-0 text-sm outline-none focus:border-purple-500"
+			(blur)="onTouched(); blur.emit()"
+			[ngClass]="{'is-invalid': formControl.invalid && formControl.touched, 'no-padding-icon' : ''}"
+			(change)="onChange($any($event.target).value)"
+			[hidden]="hidden"
+			[formControl]="formControl"
+			[compareWith]="compareWith"
+		>
+			<option [ngValue]="null" disabled selected>
+				Selecione uma opção...
+			</option>
+			<option
+				*ngFor="let o of optionsList"
+				[ngValue]="o"
+			>
+				{{o.getKey()}}
+			</option>
+		</select>
+	</div>
+	<div class="error-message absolute">
+		<span *ngIf="formControl.invalid && formControl.touched">	
+			<span *ngIf="formControl.hasError('required')">
+				Campo obrigatório.
+			</span>
+		</span>
+	</div>
+</div>
